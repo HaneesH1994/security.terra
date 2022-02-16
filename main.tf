@@ -76,7 +76,9 @@ resource "aws_security_group" "allow_all" {
 resource "aws_instance" "new" {
   ami           = "ami-0e472ba40eb589f49"
   instance_type = "t2.micro"
-  vpc_id = aws_vpc.main.id
+  data "aws_vpc" "main" {
+  id = asw_vpc.main.id
+  }
   subnet_id = aws_subnet.subnet1.id
   key_name = "hinux"
 
